@@ -18,41 +18,46 @@
             <li><a href="index.html">Features</a></li>
 	    <li><a href="index.html">Priceing</a></li>
             <li><a href="contact.html">Contact</a></li>
-	    <li><a href="index.html">Login</a></li>
         </ul>
     </nav>
 </header>
 
 <!-- HERO SECTION -->
-<section class="hero">
-    <h1>Welcome to Your Smart Home Hub</h1>
-    <p>Discover how our family-friendly AI can help you manage smart devices, energy, and comfort in your home. Easy, safe, and fun for everyone!</p>
-    <button class="cta-btn" onclick="document.getElementById('chatIcon').click()">Get Started</button>
-
-    <!-- Floating device illustrations -->
-    <img src="./assets/device1.png" class="device-floating" style="top:50px; left:20%;" alt="Device 1">
-    <img src="./assets/device2.png" class="device-floating" style="top:120px; right:15%;" alt="Device 2">
-    <img src="./assets/device3.png" class="device-floating" style="bottom:100px; left:25%;" alt="Device 3">
+<section class="contact-hero">
+    <h1>Get in Touch</h1>
+    <p>Need support or have questions? Reach us via phone or chat anytime. Office hours are 8am - 5pm, 5 days a week. Support is available 24/7!</p>
 </section>
 
-<!-- FEATURES SECTION -->
-<section class="features">
-    <div class="feature-card">
-        <img src="./assets/icon1.png" alt="Feature 1">
-        <h3>Smart Connectivity</h3>
-        <p>Connect all your home devices effortlessly and manage them from a single app.</p>
-    </div>
-    <div class="feature-card">
-        <img src="./assets/icon2.png" alt="Feature 2">
-        <h3>Family Safe</h3>
-        <p>Our AI is designed for safety and ease-of-use, perfect for kids and adults alike.</p>
-    </div>
-    <div class="feature-card">
-        <img src="./assets/icon3.png" alt="Feature 3">
-        <h3>Energy Saving</h3>
-        <p>Optimize your home energy usage while keeping your family comfortable.</p>
-    </div>
+<section class="contact-grid">
+    <!-- Office Card -->
+<div class="contact-card">
+    <h3>Office Contact</h3>
+    <ul class="hours-list">
+        <li>Sun - Closed</li>
+        <li>Mon - 8am to 5pm</li>
+        <li>Tue - 8am to 5pm</li>
+        <li>Wed - 8am to 5pm</li>
+        <li>Thu - 8am to 5pm</li>
+        <li>Fri - 8am to 5pm</li>
+        <li>Sat - Closed</li>
+    </ul>
+    <button class="hotline-btn" onclick="copyPhone('+15551234567')">📞 Call Now</button>
+</div>
+
+
+    <!-- Support Card -->
+    <div class="contact-card">
+    <h3>Support</h3>
+    <p>Available 24/7 for urgent issues</p>
+    
+    <!-- Hotline button -->
+    <button class="hotline-btn" id="hotlineBtn">📞 +1 (888) 987-6543</button>
+    
+    <button class="chat-now-btn" id="chatNowBtn">Chat Now</button>
+</div>
+
 </section>
+>
 
 <!-- Chat icon -->
 <div class="chat-icon" id="chatIcon">💬</div>

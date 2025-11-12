@@ -1,8 +1,4 @@
 /* ========================= */
-/* DARK MODERN SMART HOME CSS */
-/* ========================= */
-
-/* ========================= */
 /* COLORS */
 :root {
     --primary-color: #1f2937;    /* dark gray / header */
@@ -81,6 +77,16 @@ nav ul li:hover {
 nav ul li:hover::after {
     width: 100%;
 }
+nav ul li a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 0;
+}
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
 
 /* ========================= */
 /* HERO SECTION */
@@ -369,4 +375,181 @@ textarea:focus {
 /* SMOOTH SCROLL */
 html {
     scroll-behavior: smooth;
+}
+/* ===== CONTACT PAGE STYLES ===== */
+/* ===== CONTACT PAGE STYLES ===== */
+.contact-hero {
+    text-align: center;
+    padding: 60px 20px 40px; /* moved hero up */
+    background: linear-gradient(180deg, var(--primary-color), var(--bg-color));
+    color: var(--text-color);
+}
+
+.contact-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.contact-hero p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: #d1d5db;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 1px 60px; /* cards closer to hero */
+}
+
+.contact-card {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    padding: 25px 20px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+.contact-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 1rem;
+    color: #e5e7eb;
+    margin-bottom: 10px;
+}
+
+/* HOURS LIST */
+.contact-card ul.hours-list {
+    list-style: none;      /* removes bullets */
+    padding-left: 0;       /* removes indent */
+    margin: 4px 0;         /* spacing */
+    font-size: 0.85rem;    /* smaller text */
+    color: #d1d5db;        /* lighter color */
+}
+
+/* PHONE INPUT (if used) */
+.phone-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background-color: #1f2937;
+    color: #f9fafb;
+    margin-top: 10px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.phone-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+}
+
+/* HOTLINE / CHAT NOW BUTTONS */
+.hotline-btn,
+.chat-now-btn {
+    display: inline-block;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 25px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 12px;
+    border: none;
+}
+
+.hotline-btn {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.hotline-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.chat-now-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.chat-now-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+/* BUTTON SPACING */
+.contact-card .hotline-btn,
+.contact-card .chat-now-btn {
+    margin-top: 42px; /* space from text above */
+}
+
+.contact-card .chat-now-btn {
+    margin-top: 8px; /* space from hotline button */
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* ================== CHAT OPTION BUTTONS ================== */
+.category-buttons,
+.agent-options,
+.device-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.category-buttons button,
+.agent-options button,
+.device-buttons button,
+.back-button {
+    background-color: var(--accent-color, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.category-buttons button:hover,
+.agent-options button:hover,
+.device-buttons button:hover,
+.back-button:hover {
+    background-color: var(--accent-hover, #2563eb);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+    margin-top: 15px;
+    background-color: #6b7280;
+}
+
+.back-button:hover {
+    background-color: #4b5563;
 }

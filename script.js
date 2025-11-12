@@ -12,15 +12,15 @@ let currentDevice = "";
 
 // Device connection summaries
 const devices = {
-    "smart dishwasher": "1️⃣ Make sure it’s plugged in.\n2️⃣ Hold the Wi-Fi button for 5 seconds.\n3️⃣ Connect via the app.\nIf these steps fail, Connect to 'Agent'.",
-    "ai thermostat": "1️⃣ Power on the thermostat.\n2️⃣ Open the app and follow Wi-Fi setup.\n3️⃣ Ensure it shows 'Connected'.\nIf these steps fail, Connect to 'Agent'.",
-    "smart stove": "1️⃣ Ensure stove is powered.\n2️⃣ Hold Wi-Fi setup for 3 seconds.\n3️⃣ Retry connection in app.\nIf these steps fail, Connect to 'Agent'.",
-    "smart refrigerator": "1️⃣ Plug in the fridge.\n2️⃣ Press Wi-Fi button until LED blinks.\n3️⃣ Connect via app.\nIf these steps fail, Connect to 'Agent'.",
-    "smart washer/dryer": "1️⃣ Ensure washer/dryer is powered.\n2️⃣ Press Wi-Fi button 3 sec.\n3️⃣ Open app and connect.\nIf these steps fail, Connect to 'Agent'.",
-    "ai air purifier": "1️⃣ Power on the purifier.\n2️⃣ Open the app to connect to Wi-Fi.\n3️⃣ LED confirms connection.\nIf these steps fail, Connect to 'Agent'.",
-    "smart oven": "1️⃣ Turn oven on.\n2️⃣ Press Wi-Fi setup.\n3️⃣ Connect using app Wi-Fi setup.\nIf these steps fail, Connect to 'Agent'.",
-    "robot mower": "1️⃣ Power on mower.\n2️⃣ Press Wi-Fi button.\n3️⃣ Connect in app and test control.\nIf these steps fail, Connect to 'Agent'.",
-    "robot vacuum": "1️⃣ Power on vacuum.\n2️⃣ Hold Wi-Fi button.\n3️⃣ Connect through mobile app.\nIf these steps fail, Connect to 'Agent'."
+    "smart dishwasher": "1️⃣ Make sure it’s plugged in.\n2️⃣ Hold the Wi-Fi button for 5 seconds.\n3️⃣ Connect via the app.\nIf these steps fail, Connect to an 'Agent'.",
+    "ai thermostat": "1️⃣ Power on the thermostat.\n2️⃣ Open the app and follow Wi-Fi setup.\n3️⃣ Ensure it shows 'Connected'.\nIf these steps fail, Connect to an 'Agent'.",
+    "smart stove": "1️⃣ Ensure stove is powered.\n2️⃣ Hold Wi-Fi setup for 3 seconds.\n3️⃣ Retry connection in app.\nIf these steps fail, Connect to an 'Agent'.",
+    "smart refrigerator": "1️⃣ Plug in the fridge.\n2️⃣ Press Wi-Fi button until LED blinks.\n3️⃣ Connect via app.\nIf these steps fail, Connect to an 'Agent'.",
+    "smart washer/dryer": "1️⃣ Ensure washer/dryer is powered.\n2️⃣ Press Wi-Fi button 3 sec.\n3️⃣ Open app and connect.\nIf these steps fail, Connect to an 'Agent'.",
+    "ai air purifier": "1️⃣ Power on the purifier.\n2️⃣ Open the app to connect to Wi-Fi.\n3️⃣ LED confirms connection.\nIf these steps fail, Connect to an 'Agent'.",
+    "smart oven": "1️⃣ Turn oven on.\n2️⃣ Press Wi-Fi setup.\n3️⃣ Connect using app Wi-Fi setup.\nIf these steps fail, Connect to an 'Agent'.",
+    "robot mower": "1️⃣ Power on mower.\n2️⃣ Press Wi-Fi button.\n3️⃣ Connect in app and test control.\nIf these steps fail, Connect to an 'Agent'.",
+    "robot vacuum": "1️⃣ Power on vacuum.\n2️⃣ Hold Wi-Fi button.\n3️⃣ Connect through mobile app.\nIf these steps fail, Connect to an 'Agent'."
 };
 
 // Category responses
@@ -32,8 +32,8 @@ const categories = {
 
 // Password account options
 const passwordAccounts = [
-    {text: "Web Account", summary: "You can reset your web account password using the 'Forgot Password' link on the website. If still not working, Connect to 'Agent'."},
-    {text: "App Account", summary: "You can reset your app account password in the app settings under 'Reset Password'. If still not working, Connect to 'Agent'."}
+    {text: "Web Account", summary: "You can reset your web account password using the 'Forgot Password' link on the website. If still not working, Connect to an 'Agent'."},
+    {text: "App Account", summary: "You can reset your app account password in the app settings under 'Reset Password'. If still not working, Connect to an 'Agent'."}
 ];
 
 // Devices list
@@ -333,3 +333,46 @@ const dragElement = (element, handle) => {
 
 // Initialize dragging using chat header as the handle
 dragElement(document.getElementById("chatPopup"), document.querySelector(".chat-header"));
+// ===================== CONTACT PAGE BUTTONS =====================
+
+// Copy phone number function (can be used for hotline or office)
+function copyPhone(number) {
+    navigator.clipboard.writeText(number)
+        .then(() => {
+            alert(`Phone number ${number} copied to clipboard!`);
+        })
+        .catch(err => console.error('Failed to copy phone number: ', err));
+}
+
+// Add Chat Now button functionality for contact card
+const chatNowBtnContact = document.getElementById('chatNowBtn');
+if(chatNowBtnContact){
+    chatNowBtnContact.addEventListener('click', () => {
+        // Open chat popup
+        chatPopup.style.display = 'flex';
+        welcomePopup.classList.remove('show');
+
+        // Append connecting message
+        appendMessage("Connecting you to the next available agent...", 'ai');
+
+        // Typing animation
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble ai';
+        bubble.textContent = 'Connecting';
+        chatContainer.appendChild(bubble);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        let dots = 0;
+        const interval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            bubble.textContent = 'Connecting' + '.'.repeat(dots);
+        }, 500);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            bubble.remove();
+            appendMessage("Connected to agent.", 'ai');
+            appendMessage("Hello, this is Dewey from AI Home Support. How may I help you?", 'ai');
+        }, 3000);
+    });
+}
